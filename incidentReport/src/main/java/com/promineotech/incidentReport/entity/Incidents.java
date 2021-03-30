@@ -1,7 +1,6 @@
 package com.promineotech.incidentReport.entity;
 
-import java.sql.Time;
-import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -16,13 +15,12 @@ import javax.persistence.OneToOne;
 public class Incidents {
 	
 	private Long id;
-	private Long emplId;
-	private Long incidentCategory;
-	private Date incidentDate;
-	private Time incidentTime;
+	private String incidentDate;
+	private String incidentTime;  
 	private String incidentLocation;
 	private String incidentDescription;
 	private String injuryIllnessDescription;
+	private Set<IncidentCategory> incidentCategory;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -32,31 +30,16 @@ public class Incidents {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	@OneToMany(mappedBy = "employees")
-	public Long getEmplId() {
-		return emplId;
-	}
-	public void setEmplId(Long emplId) {
-		this.emplId = emplId;
-	}
-	public Long getIncidentCategory() {
-		return incidentCategory;
-	}
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "incidentCategory_id")
-	public void setIncidentCategory(Long incidentCategory) {
-		this.incidentCategory = incidentCategory;
-	}
-	public Date getIncidentDate() {
+	public String getIncidentDate() {
 		return incidentDate;
 	}
-	public void setIncidentDate(Date incidentDate) {
+	public void setIncidentDate(String incidentDate) {
 		this.incidentDate = incidentDate;
 	}
-	public Time getIncidentTime() {
+	public String getIncidentTime() {
 		return incidentTime;
 	}
-	public void setIncidentTime(Time incidentTime) {
+	public void setIncidentTime(String incidentTime) {
 		this.incidentTime = incidentTime;
 	}
 	public String getIncidentLocation() {
@@ -77,7 +60,11 @@ public class Incidents {
 	public void setInjuryIllnessDescription(String injuryIllnessDescription) {
 		this.injuryIllnessDescription = injuryIllnessDescription;
 	}
-
-	
-
+	@OneToOne(mappedBy = "IncidentCategory")
+	public Set<IncidentCategory> getIncidentCategory() {
+		return incidentCategory;
+	}
+	public void setIncidentCategory(Set<IncidentCategory> incidentCategory) {
+		this.incidentCategory = incidentCategory;
+	}
 }

@@ -88,8 +88,6 @@ public class IncidentCategory {
 	public void setDeath(String death) {
 		Death = death;
 	}
-	
-	@OneToOne(mappedBy = "incidents")
 	public Incidents getIncidents() {
 		return incidents;
 	}

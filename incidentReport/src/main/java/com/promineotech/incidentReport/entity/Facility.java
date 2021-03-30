@@ -12,10 +12,8 @@ import javax.persistence.OneToMany;
 public class Facility {
 	
 	private Long id;
-	private Long EmplId;
 	private String facilityName;
-	private String facilityAddress1;
-	private String facilityAddress2;
+	private String facilityAddress;
 	private String facilityCity;
 	private String facilityState;
 	private String facilityZip;
@@ -29,30 +27,17 @@ public class Facility {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	@OneToMany(mappedBy = "employees")
-	public Long getEmplId() {
-		return EmplId;
-	}
-	public void setEmplId(Long emplId) {
-		EmplId = emplId;
-	}
 	public String getFacilityName() {
 		return facilityName;
 	}
 	public void setFacilityName(String facilityName) {
 		this.facilityName = facilityName;
 	}
-	public String getFacilityAddress1() {
-		return facilityAddress1;
+	public String getFacilityAddress() {
+		return facilityAddress;
 	}
-	public void setFacilityAddress1(String facilityAddress1) {
-		this.facilityAddress1 = facilityAddress1;
-	}
-	public String getFacilityAddress2() {
-		return facilityAddress2;
-	}
-	public void setFacilityAddress2(String facilityAddress2) {
-		this.facilityAddress2 = facilityAddress2;
+	public void setFacilityAddress(String facilityAddress) {
+		this.facilityAddress = facilityAddress;
 	}
 	public String getFacilityCity() {
 		return facilityCity;

@@ -4,7 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -14,9 +13,9 @@ public class Employees {
 	private Long id;
 	private String username;
 	private String password;
-	private String first_name;
-	private String last_name;
-	private String dept_name;
+	private String firstName;
+	private String lastName;
+	private String deptName;
 	
 	@JsonIgnore
 	private Facility facility;
@@ -42,26 +41,25 @@ public class Employees {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getFirst_name() {
-		return first_name;
+	public String getFirstName() {
+		return firstName;
 	}
-	public void setFirst_name(String first_name) {
-		this.first_name = first_name;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
-	public String getLast_name() {
-		return last_name;
+	public String getLastName() {
+		return lastName;
 	}
-	public void setLast_name(String last_name) {
-		this.last_name = last_name;
+	public void setLast_name(String lastName) {
+		this.lastName = lastName;
 	}
-	public String getDept_name() {
-		return dept_name;
+	public String getDeptName() {
+		return deptName;
 	}
-	public void setDept_name(String dept_name) {
-		this.dept_name = dept_name;
+	public void setDept_name(String deptName) {
+		this.deptName = deptName;
 	}
 	
-	@OneToMany(mappedBy = "facility")
 	public Facility getFacility() {
 		return facility;
 	}
@@ -70,7 +68,6 @@ public class Employees {
 		this.facility = facility;
 	}
 	
-	@OneToMany(mappedBy = "Incidents")
 	public Incidents getIncidents() {
 		return incidents;
 	}
