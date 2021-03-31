@@ -1,11 +1,12 @@
 package com.promineotech.incidentReport.entity;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Employees {
@@ -16,10 +17,8 @@ public class Employees {
 	private String firstName;
 	private String lastName;
 	private String deptName;
-	
-	@JsonIgnore
-	private Facility facility;
-	private Incidents incidents;
+	private Set<Facility> facilities;
+	private Set<Incidents> incidents;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -59,23 +58,19 @@ public class Employees {
 	public void setDept_name(String deptName) {
 		this.deptName = deptName;
 	}
-	
-	public Facility getFacility() {
-		return facility;
+	@OneToMany(mappedBy = "employee")
+	public Set<Facility> getFacility() {
+		return facilities;
 	}
-	
-	public void setFacility(Facility facility) {
-		this.facility = facility;
+	public void setIncidentCategory(Set<Facility> facilities) {
+		this.facilities = facilities;
 	}
-	
-	public Incidents getIncidents() {
+	@OneToMany(mappedBy = "employee")
+	public Set<Incidents> getIncidents() {
 		return incidents;
 	}
-	
-	public void setIncidents(Incidents incidents) {
+	public void setIncidents(Set<Incidents> incidents) {
 		this.incidents = incidents;
 	}
-	
-	
 
 }

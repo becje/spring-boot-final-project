@@ -4,9 +4,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
-//import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 public class Facility {
@@ -18,6 +20,8 @@ public class Facility {
 	private String facilityState;
 	private String facilityZip;
 	
+	@JsonIgnore
+	private Employees employee;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -57,6 +61,13 @@ public class Facility {
 	public void setFacilityZip(String facilityZip) {
 		this.facilityZip = facilityZip;
 	}
-	
+	@ManyToOne
+	@JoinColumn(name = "emplId")
+	public Employees getEmployees() {
+		return employee;
+	}
+	public void setEmployees(Employees employees) {
+		this.employee = employees;
+	}
 
 }

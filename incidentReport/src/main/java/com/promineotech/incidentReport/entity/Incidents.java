@@ -2,14 +2,15 @@ package com.promineotech.incidentReport.entity;
 
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 public class Incidents {
@@ -22,8 +23,12 @@ public class Incidents {
 	private String injuryIllnessDescription;
 	private Set<IncidentCategory> incidentCategory;
 	
+	@JsonIgnore
+	private Employees employee;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+
 	public Long getId() {
 		return id;
 	}
@@ -60,11 +65,20 @@ public class Incidents {
 	public void setInjuryIllnessDescription(String injuryIllnessDescription) {
 		this.injuryIllnessDescription = injuryIllnessDescription;
 	}
-	@OneToOne(mappedBy = "IncidentCategory")
+	@OneToOne(mappedBy = "incidents")
 	public Set<IncidentCategory> getIncidentCategory() {
 		return incidentCategory;
 	}
 	public void setIncidentCategory(Set<IncidentCategory> incidentCategory) {
 		this.incidentCategory = incidentCategory;
 	}
+	@ManyToOne
+	@JoinColumn(name = "emplId")
+	public Employees getEmployees() {
+		return employee;
+	}
+	public void setEmployees(Employees employees) {
+		this.employee = employees;
+	}
+	
 }
