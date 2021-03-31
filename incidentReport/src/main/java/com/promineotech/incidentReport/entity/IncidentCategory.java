@@ -28,6 +28,7 @@ public class IncidentCategory {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@OneToOne(mappedBy = "Incidents")
 	public Long getId() {
 		return id;
 	}
@@ -91,11 +92,8 @@ public class IncidentCategory {
 	public Incidents getIncidents() {
 		return incidents;
 	}
-	
 	public void setIncidents(Incidents incidents) {
 		this.incidents = incidents;
 	}
-	
-	
 
 }
