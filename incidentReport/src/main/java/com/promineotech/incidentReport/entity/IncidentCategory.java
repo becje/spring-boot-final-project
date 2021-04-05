@@ -1,5 +1,6 @@
 package com.promineotech.incidentReport.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -7,6 +8,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+//import javax.persistence.OneToOne;
+//
+//import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
@@ -28,7 +32,7 @@ public class IncidentCategory {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@OneToOne(mappedBy = "Incidents")
+	@Column(name = "id")
 	public Long getId() {
 		return id;
 	}
@@ -89,6 +93,7 @@ public class IncidentCategory {
 	public void setDeath(String death) {
 		Death = death;
 	}
+	@OneToOne(mappedBy = "incidentCategory")
 	public Incidents getIncidents() {
 		return incidents;
 	}

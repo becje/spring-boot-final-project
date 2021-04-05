@@ -37,11 +37,11 @@ public class IncidentsService {
 		try {
 			Incidents newIncident = repo.findOne(id);
 			newIncident.setIncidentDate(incidents.getIncidentDate());
-			newIncident.setIncidentTime(incidents.getIncidentDate());
+			newIncident.setIncidentTime(incidents.getIncidentTime());
 			newIncident.setIncidentLocation(incidents.getIncidentLocation());
 			newIncident.setIncidentDescription(incidents.getIncidentDescription());
 			newIncident.setInjuryIllnessDescription(incidents.getInjuryIllnessDescription());
-			newIncident.setIncidentCategory(incidents.getIncidentCategory());
+//			newIncident.setIncidentCategory(incidents.getIncidentCategory());
 			return repo.save(newIncident);
 		} catch (Exception e) {
 			logger.error("Exception occurred while trying to update incident: " + id, e);

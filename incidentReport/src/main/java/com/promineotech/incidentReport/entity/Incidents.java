@@ -1,7 +1,8 @@
 package com.promineotech.incidentReport.entity;
 
-import java.util.Set;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+
+//import javax.persistence.OneToOne;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
@@ -21,14 +24,16 @@ public class Incidents {
 	private String incidentLocation;
 	private String incidentDescription;
 	private String injuryIllnessDescription;
-	private Set<IncidentCategory> incidentCategory;
+//	private Set<IncidentCategory> incidentCategory;
+	
+	private IncidentCategory incidentCategory;
 	
 	@JsonIgnore
 	private Employees employee;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-
+	@Column(name = "id")
 	public Long getId() {
 		return id;
 	}
@@ -65,13 +70,13 @@ public class Incidents {
 	public void setInjuryIllnessDescription(String injuryIllnessDescription) {
 		this.injuryIllnessDescription = injuryIllnessDescription;
 	}
-	@OneToOne(mappedBy = "incidents")
-	public Set<IncidentCategory> getIncidentCategory() {
-		return incidentCategory;
-	}
-	public void setIncidentCategory(Set<IncidentCategory> incidentCategory) {
-		this.incidentCategory = incidentCategory;
-	}
+//	@OneToOne(mappedBy = "incidents")
+//	public Set<IncidentCategory> getIncidentCategory() {
+//		return incidentCategory;
+//	}
+//	public void setIncidentCategory(Set<IncidentCategory> incidentCategory) {
+//		this.incidentCategory = incidentCategory;
+//	}
 	@ManyToOne
 	@JoinColumn(name = "emplId")
 	public Employees getEmployees() {
@@ -79,6 +84,14 @@ public class Incidents {
 	}
 	public void setEmployees(Employees employees) {
 		this.employee = employees;
+	}
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "incidentCategory_id", referencedColumnName = "id")
+	public IncidentCategory getIncidentCategory() {
+		return incidentCategory;
+	}
+	public void setIncidentCategory(IncidentCategory incidentCategory) {
+		this.incidentCategory = incidentCategory;
 	}
 	
 }

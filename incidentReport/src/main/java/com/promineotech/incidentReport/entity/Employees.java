@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+
 @Entity
 public class Employees {
 	
@@ -19,6 +20,7 @@ public class Employees {
 	private String deptName;
 	private Set<Facility> facilities;
 	private Set<Incidents> incidents;
+	
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -62,7 +64,7 @@ public class Employees {
 	public Set<Facility> getFacility() {
 		return facilities;
 	}
-	public void setIncidentCategory(Set<Facility> facilities) {
+	public void setFacility(Set<Facility> facilities) {
 		this.facilities = facilities;
 	}
 	@OneToMany(mappedBy = "employee")
