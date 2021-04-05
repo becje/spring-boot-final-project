@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="IncidentReport/src/main/java"/>
+	<classpathentry kind="src" path="IncidentReport/src/test/java"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="/Users/tram/.m2/repository/org/springframework/boot/spring-boot/1.2.6.RELEASE/spring-boot-1.2.6.RELEASE.jar" sourcepath="/Users/tram/.m2/repository/org/springframework/boot/spring-boot/1.2.6.RELEASE/spring-boot-1.2.6.RELEASE-sources.jar">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="maven.groupId" value="org.springframework.boot"/>
+			<attribute name="maven.artifactId" value="spring-boot"/>
+			<attribute name="maven.version" value="1.2.6.RELEASE"/>
+			<attribute name="maven.scope" value="compile"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/tram/.m2/repository/org/springframework/spring-context/4.1.7.RELEASE/spring-context-4.1.7.RELEASE.jar" sourcepath="/Users/tram/.m2/repository/org/springframework/spring-context/4.1.7.RELEASE/spring-context-4.1.7.RELEASE-sources.jar">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="maven.groupId" value="org.springframework"/>
+			<attribute name="maven.artifactId" value="spring-context"/>
+			<attribute name="maven.version" value="4.1.7.RELEASE"/>
+			<attribute name="maven.scope" value="compile"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/tram/.m2/repository/org/springframework/boot/spring-boot-autoconfigure/1.2.6.RELEASE/spring-boot-autoconfigure-1.2.6.RELEASE.jar" sourcepath="/Users/tram/.m2/repository/org/springframework/boot/spring-boot-autoconfigure/1.2.6.RELEASE/spring-boot-autoconfigure-1.2.6.RELEASE-sources.jar">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="maven.groupId" value="org.springframework.boot"/>
+			<attribute name="maven.artifactId" value="spring-boot-autoconfigure"/>
+			<attribute name="maven.version" value="1.2.6.RELEASE"/>
+			<attribute name="maven.scope" value="compile"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/tram/mysql-connector-java-8.0.23/mysql-connector-java-8.0.23.jar"/>
+	<classpathentry kind="output" path="IncidentReport/target/classes"/>
+</classpath>
