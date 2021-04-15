@@ -9,49 +9,49 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.promineotech.incidentReport.entity.Facility;
-import com.promineotech.incidentReport.service.FacilityService;
+import com.promineotech.incidentReport.entity.Incident;
+import com.promineotech.incidentReport.service.IncidentService;
 
 @RestController
-@RequestMapping("/facilities")
-public class FacilityController {
+@RequestMapping("/incidents")
+public class IncidentController {
 
 	@Autowired
-	private FacilityService service;
+	private IncidentService service;
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET)
-	public ResponseEntity<Object> getFacility(@PathVariable Long id){
+	public ResponseEntity<Object> getIncident(@PathVariable Long id){
 		try {
-			return new ResponseEntity<Object>(service.getFacilityById(id), HttpStatus.OK);
+			return new ResponseEntity<Object>(service.getIncidentById(id), HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<Object>(e.getMessage(), HttpStatus.NOT_FOUND);
 		}
 	}
 	
 	@RequestMapping(method=RequestMethod.GET)
-	public ResponseEntity<Object> getFacilities(){
-		return new ResponseEntity<Object>(service.getFacilities(), HttpStatus.OK);
+	public ResponseEntity<Object> getIncidents(){
+		return new ResponseEntity<Object>(service.getIncident(), HttpStatus.OK);
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)
-	public ResponseEntity<Object> createFacility(@RequestBody Facility facility){
-		return new ResponseEntity<Object>(service.createFacility(facility), HttpStatus.CREATED);
+	public ResponseEntity<Object> createIncident(@RequestBody Incident incident){
+		return new ResponseEntity<Object>(service.createIncident(incident), HttpStatus.CREATED);
 	}
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
-	public ResponseEntity<Object> updateFacility(@RequestBody Facility facility, @PathVariable Long id){
+	public ResponseEntity<Object> updateIncident(@RequestBody Incident incident, @PathVariable Long id){
 		try {
-			return new ResponseEntity<Object>(service.updateFacility(facility, id), HttpStatus.OK);
+			return new ResponseEntity<Object>(service.updateIncident(incident, id), HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<Object>(e.getMessage(), HttpStatus.NOT_FOUND);
 		}
 	}
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
-	public ResponseEntity<Object> deleteFacility(@PathVariable Long id){
+	public ResponseEntity<Object> deleteIncident(@PathVariable Long id){
 		try {
-			service.deleteFacility(id);
-			return new ResponseEntity<Object>("Successfully deleted facility by id; " + id, HttpStatus.OK);
+			service.deleteIncident(id);
+			return new ResponseEntity<Object>("Successfully deleted incident with id: " + id, HttpStatus.OK);
 		} catch (Exception e) {
 			return new ResponseEntity<Object>(e.getMessage(), HttpStatus.NOT_FOUND);
 		}

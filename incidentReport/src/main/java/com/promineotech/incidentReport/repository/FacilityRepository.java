@@ -4,6 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.promineotech.incidentReport.entity.Facility;
 
-public interface FacilityRepository extends CrudRepository<Facility, Long>{
+public interface FacilityRepository extends CrudRepository<Facility, Long> {
 
 }
