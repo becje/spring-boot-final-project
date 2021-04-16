@@ -2,19 +2,18 @@ package com.promineotech.incidentReport.entity;
 
 import java.util.Set;
 
-//import javax.persistence.CascadeType;
-
-//import java.util.List;
-
-//import javax.persistence.Column;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-//import javax.persistence.JoinColumn;
-//import javax.persistence.ManyToMany;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
-//import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.JoinColumn;
 
 
 @Entity
@@ -27,16 +26,13 @@ public class Employee {
 	private String username;
 	private String password;
 	private String deptName;
-	//private Facility facilities;
-	//private Incident incidents;
-	private Set<Facility> facilities;
+	
+	@JsonIgnore
 	private Set<Incident> incidents;
 	
-	
-//	@ManyToMany(mappedBy = "facility")
-//	private List<Facility> facilities;
-//	@ManyToMany(mappedBy = "incident")
-//	private List<Incident> incidents;
+	@JsonIgnore
+	private Set<Facility> facilities;
+
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -77,42 +73,24 @@ public class Employee {
 	public void setDeptName(String deptName) {
 		this.deptName = deptName;
 	}
-	//@ManyToMany (mappedBy = "facility")
-//	@ManyToMany (cascade = CascadeType.ALL)
-//	@JoinColumn(name = "facility_id")
-	@OneToMany(mappedBy = "employee")
-	public Set<Facility> getFacility() {
+	
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "emp_facility",
+			joinColumns = @JoinColumn(name = "employeeId", referencedColumnName = "id"),
+			inverseJoinColumns = @JoinColumn(name = "facilityId", referencedColumnName = "id"))
+	
+	public Set<Facility> getFacilities() {
 		return facilities;
 	}
-	public void setFacility(Set<Facility> facilities) {
+	public void setFacilities(Set<Facility> facilities) {
 		this.facilities = facilities;
-	}
-	//@ManyToMany (mappedBy = "incident")
-//	@ManyToMany(cascade = CascadeType.ALL)
-//	@JoinColumn(name = "employee_id", referencedColumnName = "id")
-	@OneToMany(mappedBy = "employee")
+	}	
+	@OneToMany (mappedBy= "employee")
 	public Set<Incident> getIncidents() {
 		return incidents;
 	}
 	public void setIncidents(Set<Incident> incidents) {
 		this.incidents = incidents;
 	}
-	
-//	@OneToMany(mappedBy = "employee")
-//	public Set<Facility> getFacilities() {
-//		return facilities;
-//	}
-//	public void setFacilities(Set<Facility> facilities) {
-//		this.facilities = facilities;
-//	}
-//	
-//	@OneToMany(mappedBy = "employee")
-//	public Set<Incident> getIncidents() {
-//		return incidents;
-//	}
-//	public void setIncidents(Set<Incident> incidents) {
-//		this.incidents = incidents;
-//	}
-	
 	
 }

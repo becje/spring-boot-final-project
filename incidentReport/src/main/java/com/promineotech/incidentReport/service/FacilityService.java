@@ -41,7 +41,7 @@ public class FacilityService {
 	private Facility initializeNewFacility(Set<Long> employeeIds, Employee employee) {
 		Facility facility = new Facility();
 //		facility.setEmployee(employee(employeeRepo.findAll(employeeIds)));
-		facility.setEmployee(employee);
+		//facility.setEmployee(employee);
 		return null;
 	}
 

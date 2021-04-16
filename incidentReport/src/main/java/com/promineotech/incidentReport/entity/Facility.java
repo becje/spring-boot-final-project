@@ -1,12 +1,16 @@
 package com.promineotech.incidentReport.entity;
 
-import javax.persistence.Column;
+
+import java.util.Set;
+
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+
+import javax.persistence.ManyToMany;
+
 //import javax.persistence.ManyToMany;
 //import javax.persistence.Table;
 //import javax.persistence.ManyToOne;
@@ -29,7 +33,7 @@ public class Facility {
 //	private List<Employee> employee;
 	
 	@JsonIgnore
-	private Employee employee;
+	private Set<Employee> employees;
 	
 //	@ManyToMany
 //	private Employee employees;
@@ -38,7 +42,7 @@ public class Facility {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id")
+	//@Column(name = "id")
 	public Long getId() {
 		return id;
 	}
@@ -76,13 +80,12 @@ public class Facility {
 		this.zip = zip;
 	}
 	
-	@ManyToOne
-	@JoinColumn(name = "employeeId")
-	public Employee getEmployee() {
-		return employee;
+	@ManyToMany(mappedBy = "facilities")
+	public Set<Employee> getEmployees() {
+		return employees;
 	}
-	public void setEmployee(Employee employees) {
-		this.employee = employees;
+	public void setEmployees(Set<Employee> employees) {
+		this.employees = employees;
 	}
 	
 //	@OneToMany(mappedBy = "EmployeeAtFacility")

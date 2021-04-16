@@ -8,8 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-//import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+//import javax.persistence.ManyToMany;
+//import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 //import javax.persistence.Table;
 
@@ -78,7 +79,7 @@ public class Incident {
 		this.date = date;
 	}
 	@ManyToOne
-	@JoinColumn(name = "employeeId")
+	@JoinColumn(name = "employee_id")
 	public Employee getEmployee() {
 		return employees;
 	}
